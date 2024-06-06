@@ -1,0 +1,51 @@
+openapi: 3.0.3
+info:
+  title: Environment Variables API
+  description: A simple API to get environment variables values.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Development server
+
+paths:
+  /testId:
+    get:
+      summary: Get testId
+      description: Returns the value of the environment variable `testId` as a JSON object.
+      responses:
+        '200':
+          description: A JSON object containing the `testId`.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  testId:
+                    type: string
+                    example: "yourTestId"
+        '500':
+          description: Internal server error indicating that the testId environment variable is not set.
+
+  /testPassword:
+    get:
+      summary: Get testPassword
+      description: Returns the value of the environment variable `testPassword` as a JSON object.
+      responses:
+        '200':
+          description: A JSON object containing the `testPassword`.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  testPassword:
+                    type: string
+                    example: "yourTestPassword"
+        '500':
+          description: Internal server error indicating that the testPassword environment variable is not set.
+
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
